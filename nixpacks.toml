@@ -1,5 +1,5 @@
-[build]
-builder = "node"
+[phases.setup]
+nixPkgs = ["nodejs"]
 
 [start]
 cmd = "node server.js"
