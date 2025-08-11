@@ -15,7 +15,7 @@ app.get('/api/search', (req, res) => {
 });
 
 app.listen(process.env.PORT || 8080, function () {
-  console.log('Listening on port 8080');
+  console.log(`Listening on port ${PORT}`);
 });
 
 module.exports = app;
