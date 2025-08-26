@@ -1,38 +1,63 @@
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    <title>YouTube API</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.6/journal/bootstrap.min.css"/>
-    <style>
-        body {
-            margin-top: 15px;
-        }
-        footer {
-            margin-top: 50px;
-            padding-top: 15px;
-            border-top: 1px solid #EEE;
-        }
-        .output {
-          line-height: 50px;
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Test Page</title>
+  <meta name="description" content="A simple test page with a link." />
+  <style>
+    :root{--bg:#0f172a;--card:#0b1220;--accent:#38bdf8;--muted:#94a3b8}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial}
+    body{display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#071124 0%, #081628 100%);color:#e6eef8}
+    .card{max-width:680px;width:92%;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.04);padding:28px;border-radius:12px;box-shadow:0 6px 30px rgba(2,6,23,0.6)}
+    h1{margin:0 0 8px;font-size:20px}
+    p{margin:0 0 16px;color:var(--muted);line-height:1.5}
+    .link{display:inline-flex;gap:8px;align-items:center;padding:10px 14px;background:rgba(255,255,255,0.02);border-radius:10px;border:1px solid rgba(255,255,255,0.03);text-decoration:none;color:var(--accent);font-weight:600}
+    .actions{margin-top:16px;display:flex;gap:10px}
+    button{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 10px;border-radius:8px;color:#cfe9ff;cursor:pointer}
+    small{display:block;margin-top:12px;color:#93a4bb}
+    @media (max-width:420px){.card{padding:18px}h1{font-size:18px}}
+  </style>
 </head>
 <body>
-  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-   <div class="container">
-	<div class="jumbotron text-center">
-		<div class="page-header">
-	  		<h1>YouTube API</h1>
-		</div>
-	</div>
-	<div class="row">
-	    <h1>YouTube API TEST</h1>
+  <main class="card" role="main">
+    <h1>This is a test page</h1>
+    <p>To view more, visit the link below.</p>
 
-        
+    <a id="externalLink" class="link" href="https://t.co/xlOpVf7CNG" target="_blank" rel="noopener noreferrer">
+      https://t.co/xlOpVf7CNG
+    </a>
 
+    <div class="actions">
+      <button id="copyBtn" type="button" aria-label="Copy link">Copy link</button>
+      <button id="openBtn" type="button">Open in new tab</button>
+    </div>
 
-    </div>  
+    <small id="notice">Link opens in a new tab. Use caution when following short links.</small>
+  </main>
 
+  <script>
+    const link = document.getElementById('externalLink');
+    const copyBtn = document.getElementById('copyBtn');
+    const openBtn = document.getElementById('openBtn');
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    copyBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(link.href);
+        copyBtn.textContent = 'Copied!';
+        setTimeout(() => copyBtn.textContent = 'Copy link', 1500);
+      } catch (e) {
+        copyBtn.textContent = 'Copy failed';
+      }
+    });
+
+    openBtn.addEventListener('click', () => {
+      window.open(link.href, '_blank', 'noopener');
+    });
+
+    // Accessibility: focus the main area for keyboard users
+    document.querySelector('.card').setAttribute('tabindex','-1');
+    document.querySelector('.card').focus();
+  </script>
 </body>
 </html>
