@@ -2,7 +2,10 @@ const express = require('express');
 const scraper = require('./scraper');
 const app = express();
 
-const API_KEY = process.env.API_KEY || "ytai_92384_XYZ"; // set in Railway env
+const API_KEY = process.env.API_KEY;
+if (!API_KEY) {
+  throw new Error("API_KEY is not set in environment variables");
+} // set in Railway env
 
 // Home page
 app.get('/', (req, res) => {
