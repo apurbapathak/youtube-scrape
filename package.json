@@ -1,14 +1,14 @@
 {
-    "name": "youtube-scrape",
-    "version": "0.1.5",
-    "description": "Scrape YouTube searches",
-    "main": "server.js",
-    "author": "Herman Fassett",
-    "dependencies": {
-        "express": "latest",
-        "request": "latest"
-    },
-    "scripts": {
-        "start": "node server.js"
-    }
+  "name": "youtube-scrape",
+  "version": "0.1.5",
+  "description": "Scrape YouTube searches",
+  "main": "server.js",
+  "author": "Herman Fassett",
+  "dependencies": {
+    "express": "^4.19.2",
+    "axios": "^1.7.2"
+  },
+  "scripts": {
+    "start": "node server.js"
+  }
 }
