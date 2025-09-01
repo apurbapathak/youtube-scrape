@@ -21,8 +21,26 @@
 </head>
 <body>
   <main class="card" role="main">
-    <h1>This is a test page</h1>
+    <h1>YouTube Scraper API</h1>
     <p>To view more, visit the link below.</p>
+
+
+  <p>Welcome! This API lets you fetch YouTube search results without an API key.</p>
+
+  <h2>Example Usage</h2>
+  <p><b>Search for "adhenti gani":</b></p>
+  <pre><code>https://ytai-production.up.railway.app/api/search?q=adhenti+gani</code></pre>
+
+  <p><b>With pagination (pageToken):</b></p>
+  <pre><code>https://ytai-production.up.railway.app/api/search?q=adhenti+gani&pageToken=XYZ123</code></pre>
+
+  <h2>Parameters</h2>
+  <ul>
+    <li><b>q</b> (required) – Search query</li>
+    <li><b>pageToken</b> (optional) – Pass this to fetch the next page</li>
+  </ul>
+
+  <p>Response is JSON with video results, thumbnails, titles, and more.</p>
 
     <a id="externalLink" class="link" href="https://t.co/xlOpVf7CNG" target="_blank" rel="noopener noreferrer">
       https://t.co/xlOpVf7CNG
