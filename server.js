@@ -9,7 +9,14 @@ app.get('/', (req, res) => {
 
 // API route (no API key required)
 app.get('/api/search', (req, res) => {
-    scraper.youtube(req.query.q, req.query.pageToken)
+    const query = req.query.q;
+    const pageToken = req.query.pageToken;
+
+    if (!query) {
+        return res.status(400).json({ error: "Missing required parameter: q" });
+    }
+
+    scraper.youtube(query, pageToken)
         .then(x => res.json(x))
         .catch(e => res.status(500).json({ error: e.message }));
 });
